@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ray Portofolio | Let Him Cook</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="#home" class="logo">Portofolio<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#skills">Hobi</a></li>
+                <li><a href="#projects">Proyek</a></li>
+                <li><a href="#contact">Kontak</a></li>
+                <li>
+                    <div class="mode-toggle" id="dark-mode-toggle">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-text">
+                <p class="greeting">Halo, mampir dulu cuy!</p>
+                <h1 class="name">Al-Azali Muhammad Ray</h1>
+                <p class="tagline">Cuma seorang developer yang hobi banget ngulik sampai nemu logic paling efisien. Prinsip aku simpel: let me cook di depan layar, dan lo tinggal terima beres hasilnya yang sudah pasti nggak kaleng-kaleng.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Ajak Collab 🔥</a>
+                    <a href="#projects" class="btn btn-secondary">Lihat Karya</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="image-frame">
+                    <img src="images/profile.jpg" alt="Ray Profile">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Tentang Aku</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Aku fokus bikin output kerjaan yang clean dan memastikan asupan kopi tetep mengalir biar nggak kena mental duluan pas ketemu bug.</p>
+                    <p>Meskipun aku tipe orang yang tetap bilang 'Gwenchana' meski deadline udah mepet, aku jamin hasil akhirnya bakal tetap menyala abangkuh!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Sports & Hustle</h2>
+            <div class="skills-grid">
+                <div class="skills-grid">
+    <div class="skill-card">
+        <div class="skill-icon-wrapper">
+            <i class="fas fa-futbol"></i>
+        </div>
+        <h3>Futsal / Mini Soccer</h3>
+        <div class="progress-bar"><div class="progress" data-width="95%"></div></div>
+        <div class="skill-footer"><span>95%</span><span class="skill-level">Playmaker</span></div>
+    </div>
+
+    <div class="skill-card">
+        <div class="skill-icon-wrapper">
+            <i class="fas fa-guitar"></i>
+        </div>
+        <h3>Guitarist</h3>
+        <div class="progress-bar"><div class="progress" data-width="80%"></div></div>
+        <div class="skill-footer"><span>80%</span><span class="skill-level">Fingerstyle</span></div>
+    </div>
+
+    <div class="skill-card">
+        <div class="skill-icon-wrapper">
+            <i class="fas fa-medal"></i>
+        </div>
+        <h3>Badminton</h3>
+        <div class="progress-bar"><div class="progress" data-width="85%"></div></div>
+        <div class="skill-footer"><span>85%</span><span class="skill-level">Smash Abis</span></div>
+    </div>
+
+    <div class="skill-card">
+        <div class="skill-icon-wrapper">
+            <i class="fas fa-circle"></i>
+        </div>
+        <h3>Billiard</h3>
+        <div class="progress-bar"><div class="progress" data-width="80%"></div></div>
+        <div class="skill-footer"><span>80%</span><span class="skill-level">Trickshot</span></div>
+    </div>
+</div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Proyek Pilihan</h2>
+            <div class="projects-grid">
+                <div class="projects-grid">
+    <div class="project-card">
+        <div class="project-image">
+            <img src="link-foto-proyek-lo-1.jpg" alt="Project 1">
+            <div class="project-overlay">
+                <div class="project-tags">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                </div>
+            </div>
+        </div>
+        <div class="project-info">
+            <h3>Website Personal v1</h3>
+            <p>Eksperimen pertama gue bikin web pake efek glassmorphism.</p>
+            <a href="#" class="btn-project">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+
+    <div class="project-card">
+        <div class="project-image">
+            <img src="link-foto-proyek-lo-2.jpg" alt="Project 2">
+            <div class="project-overlay">
+                <div class="project-tags">
+                    <span>JavaScript</span>
+                    <span>API</span>
+                </div>
+            </div>
+        </div>
+        <div class="project-info">
+            <h3>App Monitoring Olahraga</h3>
+            <p>Dashboard buat mantau progres latihan futsal dan hobi lainnya.</p>
+            <a href="#" class="btn-project">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Mari Ngobrol</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item"><i class="fas fa-envelope"></i><div><h4>Email</h4><p>alazalimuhammadrayawokawok@gmail.com</p></div></div>
+                    <div class="contact-item"><i class="fas fa-map-marker-alt"></i><div><h4>Lokasi</h4><p>Padang, Indonesia</p></div></div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group"><input type="text" placeholder="Nama Anda" required></div>
+                    <div class="form-group"><input type="email" placeholder="Email Anda" required></div>
+                    <div class="form-group"><textarea placeholder="Mau bahas apa nih?" rows="5" required></textarea></div>
+                    <button type="submit" class="btn btn-primary">Kirim Pesan 🔥</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p class="credit">Built with Passion by <span>Al-Azali Muhammad Ray</span></p>
+                <p class="copyright">&copy; 2026 | All Rights Reserved</p>
+            </div>
+            <div class="footer-social">
+                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+            <small class="hidden-msg">"Logic will get you from A to B. Imagination will take you everywhere."</small>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
