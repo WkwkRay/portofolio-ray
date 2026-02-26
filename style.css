@@ -1,16 +1,4 @@
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-.container {
-    width: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
-    overflow-x: hidden; /* Mencegah geser kanan-kiri yang gak jelas */
-}
-
-
+/* ==================== 1. RESET & VARIABLES ==================== */
 * {
     margin: 0;
     padding: 0;
@@ -19,27 +7,27 @@ img {
 
 :root {
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --primary-color: #8b5cf6;       /* Violet */
-    --secondary-color: #7c3aed;     /* Ungu gelap */
-    --accent-color: #a78bfa;        /* Ungu terang */
-    --dark-color: #1e1b4b;          /* Navy ungu */
-    --light-color: #f5f3ff;         /* Putih keunguan */
-    --text-color: #312e81;          /* Abu-abu ungu */
-    --text-light: #6b7280;          /* Abu-abu terang */
+    --primary-color: #8b5cf6;
+    --secondary-color: #7c3aed;
+    --accent-color: #a78bfa;
+    --dark-color: #1e1b4b;
+    --light-color: #f5f3ff;
+    --text-color: #312e81;
+    --text-light: #6b7280;
     --white: #ffffff;
     --gradient: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
     --shadow: 0 10px 15px -3px rgba(139, 92, 246, 0.3);
 }
 
-/* --- DARK MODE THEME --- */
 body.dark-theme {
-    --white: #0f172a;        /* Background Gelap */
-    --light-color: #020617;  /* Background Lebih Gelap */
-    --text-color: #f1f5f9;   /* Teks Jadi Putih */
+    --white: #0f172a;
+    --light-color: #020617;
+    --text-color: #f1f5f9;
     --text-light: #94a3b8;
-    --dark-color: #8b5cf6;   /* Navy balik ke Violet */
+    --dark-color: #8b5cf6;
 }
 
+/* ==================== 2. BASE STYLES ==================== */
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
@@ -50,7 +38,7 @@ body {
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--light-color);
-    overflow-x: hidden;
+    overflow-x: hidden; /* Penting biar gak goyang kanan kiri di HP */
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -58,12 +46,19 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    width: 100%;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 
-/* ==================== NAVBAR ==================== */
+/* ==================== 3. NAVBAR ==================== */
 .navbar {
     position: fixed;
     top: 0;
@@ -108,14 +103,14 @@ ul { list-style: none; }
     height: 35px;
 }
 
-.mode-toggle:hover {
-    background: var(--primary-color);
-    color: var(--white);
-}
-
-/* ==================== HERO SECTION ==================== */
+/* ==================== 4. HERO SECTION ==================== */
 .hero { padding: 160px 0 80px; }
-.hero .container { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+.hero .container { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 50px; 
+    align-items: center; 
+}
 
 .greeting { font-size: 1.2rem; color: var(--primary-color); font-weight: 600; }
 .name { font-size: 3.5rem; line-height: 1.1; margin: 15px 0; color: var(--dark-color); font-weight: 700; }
@@ -127,8 +122,8 @@ ul { list-style: none; }
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
     background: var(--gradient);
     padding: 10px;
-    transition: var(--transition);
     animation: morph 8s ease-in-out infinite;
+    margin-left: auto;
 }
 
 .image-frame img { 
@@ -139,348 +134,94 @@ ul { list-style: none; }
 }
 
 @keyframes morph {
-    0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+    0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
     50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
-    100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
 }
 
-/* ==================== ABOUT (GAYA LAMA) ==================== */
-.about { padding: 100px 0; background: var(--white); }
-.about-text { 
-    background: var(--white); 
-    padding: 40px; 
-    border-radius: 20px; 
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); 
-}
-.about-text p:first-child::first-letter { 
-    font-size: 3.5rem; 
-    font-weight: 700; 
-    color: var(--primary-color); 
-    float: left; 
-    line-height: 1; 
-    margin-right: 12px; 
-}
-
-/* ==================== SKILLS (SPORTS & HUSTLE) ==================== */
-.skills { padding: 100px 0; }
+/* ==================== 5. CARDS (SKILLS & PROJECTS) ==================== */
 .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 60px; color: var(--dark-color); }
 
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
-.skill-card { 
+.skills-grid, .projects-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 25px; 
+}
+
+.skill-card, .project-card { 
     background: var(--white); 
-    padding: 35px; 
+    padding: 30px; 
     border-radius: 24px; 
-    text-align: center;
     transition: var(--transition);
     box-shadow: var(--shadow);
 }
-.skill-card:hover { transform: translateY(-10px); }
 
-.skill-icon-wrapper { 
-    font-size: 2.5rem; 
-    color: var(--primary-color); 
-    margin-bottom: 20px; 
-    transition: var(--transition);
-}
+.skill-card:hover, .project-card:hover { transform: translateY(-10px); }
 
-/* --- ANIMATIONS FOR ALL SPORTS --- */
-
-/* Futsal - Bounce */
-.skill-card:hover .fa-futbol { animation: ball-bounce 0.6s ease-in-out infinite; }
-@keyframes ball-bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
-}
-
-/* Guitar - Shake */
-.skill-card:hover .fa-guitar { animation: guitar-shake 0.5s ease-in-out infinite; }
-@keyframes guitar-shake {
-    0%, 100% { transform: rotate(0deg); }
-    25% { transform: rotate(-10deg); }
-    75% { transform: rotate(10deg); }
-}
-
-/* Badminton - Shuttle Move */
-.skill-card:hover .fa-medal { animation: shuttle-move 0.5s ease-in-out infinite; }
-@keyframes shuttle-move {
-    0%, 100% { transform: translateX(0) rotate(0deg); }
-    50% { transform: translateX(10px) rotate(20deg); }
-}
-
-/* Billiard - Spin */
-.skill-card:hover .fa-circle { animation: ball-spin 1s linear infinite; }
-@keyframes ball-spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-.progress-bar { background: #e2e8f0; height: 10px; border-radius: 10px; margin: 20px 0; overflow: hidden; }
-.progress { background: var(--gradient); height: 100%; width: 0; border-radius: 10px; transition: width 1.5s cubic-bezier(0.1, 0.5, 0.5, 1); }
-
-.skill-footer { display: flex; justify-content: space-between; font-weight: 700; font-size: 0.9rem; }
-.skill-level { color: var(--primary-color); font-style: italic; }
-
-/* ==================== BUTTONS & SOCIALS ==================== */
+/* ==================== 6. UTILS & BUTTONS ==================== */
 .btn { 
     display: inline-block;
     padding: 12px 32px; 
     border-radius: 12px; 
     font-weight: 600; 
-    cursor: pointer; 
     transition: var(--transition); 
-    border: none; 
 }
-.btn-primary { background: var(--primary-color); color: var(--white); box-shadow: var(--shadow); }
-.btn-primary:hover { background: var(--secondary-color); transform: translateY(-3px); }
+.btn-primary { background: var(--primary-color); color: var(--white); }
 .btn-secondary { border: 2px solid var(--primary-color); color: var(--primary-color); margin-left: 10px; }
-.btn-secondary:hover { background: var(--primary-color); color: var(--white); }
 
-.social-links { display: flex; gap: 15px; margin-top: 25px; }
-.social-links a {
-    width: 45px; height: 45px; border-radius: 50%; border: 1px solid #ddd;
-    display: flex; align-items: center; justify-content: center; transition: var(--transition);
-}
-.social-links a:hover { background: var(--primary-color); color: white; transform: rotate(360deg); }
-
-/* ==================== CONTACT & FOOTER ==================== */
-.contact { background: var(--dark-color); color: var(--white); padding: 100px 0; }
-.contact .section-title { color: white; }
-.contact-content { display: grid; grid-template-columns: 1fr 1.5fr; gap: 50px; }
-
-.contact-item { 
-    display: flex; gap: 20px; align-items: center; 
-    background: rgba(255,255,255,0.05); padding: 25px; border-radius: 20px; margin-bottom: 20px;
-}
-.contact-form { background: rgba(255,255,255,0.05); padding: 40px; border-radius: 20px; }
-.form-group { margin-bottom: 20px; }
-.form-group input, .form-group textarea { 
-    width: 100%; padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); 
-    background: rgba(255,255,255,0.1); color: white; font-family: inherit;
-}
-
-footer {
-    background: #020617; 
-    padding: 60px 0 30px;
-    text-align: center;
-    border-top: 1px solid rgba(139, 92, 246, 0.1);
-}
-
-.footer-content .credit {
-    color: var(--white);
-    font-size: 1.1rem;
-    font-weight: 400;
-    margin-bottom: 5px;
-}
-.footer-content .credit span { color: var(--primary-color); font-weight: 700; letter-spacing: 1px; }
-
-.hidden-msg {
-    display: block;
-    color: rgba(255, 255, 255, 0.1);
-    font-style: italic;
-    margin-top: 20px;
-    transition: 0.5s;
-    cursor: default;
-}
-.hidden-msg:hover { color: var(--accent-color); }
-
-/* ==================== CUSTOM CURSOR ==================== */
-.cursor-dot {
-    width: 8px;
-    height: 8px;
-    background-color: var(--primary-color);
-}
-.cursor-outline {
-    width: 30px;
-    height: 30px;
-    border: 2px solid var(--primary-color);
-}
-.cursor-dot, .cursor-outline {
-    position: fixed;
-    top: 0; left: 0;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    z-index: 9999; 
-    pointer-events: none; 
-    transition: width 0.3s, height 0.3s, background-color 0.3s;
-}
-
-@media (min-width: 992px) {
-    body { cursor: none; }
-    a, button, .skill-card, .project-card, .mode-toggle { cursor: none; }
-}
-
-.cursor-active {
-    width: 50px;
-    height: 50px;
-    background-color: rgba(139, 92, 246, 0.1);
-    border: 1px solid var(--primary-color);
-}
-
-/* ==================== RESPONSIVE ==================== */
+/* ==================== 7. MOBILE RESPONSIVE (THE REAL MAGIC) ==================== */
 @media (max-width: 992px) {
-    .hero .container { grid-template-columns: 1fr; text-align: center; }
-    .hero-image { order: -1; }
-    .image-frame { margin: 0 auto; width: 300px; height: 300px; }
-    
-    .nav-links { 
-        display: none; 
-        flex-direction: column;
-        position: absolute;
-        top: 100%; left: 0; width: 100%;
-        background: var(--white);
-        padding: 20px;
-        box-shadow: var(--shadow);
-        text-align: center;
-    }
-    .nav-links.active { display: flex; }
-    .hamburger { display: block; }
-}
-
-/* Dark Mode Card Overrides */
-body.dark-theme .skill-card, 
-body.dark-theme .project-card,
-body.dark-theme .about-text {
-    background: #1e293b;
-    border: 1px solid rgba(255,255,255,0.05);
-}
-
-/* ==================== PROJECT UPDATES ==================== */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.project-card {
-    background: var(--white);
-    border-radius: 20px;
-    overflow: hidden; /* Biar foto nggak keluar jalur */
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-}
-
-.project-image {
-    position: relative;
-    height: 220px;
-    overflow: hidden;
-}
-
-.project-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Biar foto nggak penyet */
-    transition: transform 0.5s ease;
-}
-
-.project-card:hover .project-image img {
-    transform: scale(1.1); /* Efek zoom pas di-hover */
-}
-
-/* Efek Lapisan Ungu di atas Foto */
-.project-overlay {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: linear-gradient(to bottom, transparent, rgba(124, 58, 237, 0.7));
-    display: flex;
-    align-items: flex-end;
-    padding: 20px;
-    opacity: 0;
-    transition: 0.3s;
-}
-
-.project-card:hover .project-overlay {
-    opacity: 1;
-}
-
-.project-tags span {
-    background: var(--primary-color);
-    color: white;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    margin-right: 5px;
-}
-
-.project-info {
-    padding: 25px;
-}
-
-.project-info h3 {
-    margin-bottom: 10px;
-    color: var(--dark-color);
-}
-
-.btn-project {
-    display: inline-block;
-    margin-top: 15px;
-    color: var(--primary-color);
-    font-weight: 600;
-    font-size: 0.9rem;
-}
-
-/* ==================== RESPONSIVE UPDATES BY ROY ==================== */
-
-@media (max-width: 992px) {
+    .hero { padding: 120px 0 60px; }
     .hero .container { 
         grid-template-columns: 1fr; 
         text-align: center; 
-        gap: 30px;
     }
+    
     .hero-image { order: -1; }
-    .image-frame { margin: 0 auto; width: 280px; height: 280px; }
-    .name { font-size: 2.8rem; }
+    .image-frame { 
+        width: 250px; 
+        height: 250px; 
+        margin: 0 auto 30px; 
+    }
 
-    /* Navbar Mobile Logic */
+    .name { font-size: 2.5rem; }
+
+    /* Nav Mobile */
     .nav-links { 
-        display: flex; 
-        flex-direction: column;
-        position: fixed; /* Pake fixed biar ngikut pas di-scroll */
-        top: 70px; 
-        left: -100%; /* Sembunyi di kiri luar layar */
-        width: 100%;
-        height: auto;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 80%; /* Menu gak menuhin layar banget biar lega */
+        height: 100vh;
         background: var(--white);
-        padding: 40px 0;
-        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-        text-align: center;
-        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        gap: 25px;
+        flex-direction: column;
+        justify-content: center;
+        transition: 0.5s ease;
         z-index: 999;
+        box-shadow: 10px 0 30px rgba(0,0,0,0.1);
     }
 
-    /* Pas class 'active' ditambahin via JS, menu bakal geser ke tengah */
-    .nav-links.active { 
-        left: 0; 
-    }
-
-    .hamburger { 
-        display: block; 
-        font-size: 1.8rem;
-    }
-
-    /* Dark Mode Navbar Mobile Fix */
-    body.dark-theme .nav-links {
-        background: var(--white); /* Variabel --white lo di dark mode itu warna gelap */
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
+    .nav-links.active { left: 0; }
+    .hamburger { display: block; z-index: 1001; }
 }
 
-@media (max-width: 480px) {
-    .name { font-size: 2.2rem; }
-    .greeting { font-size: 1rem; }
-    .hero-buttons { display: flex; flex-direction: column; gap: 15px; }
+@media (max-width: 576px) {
+    .name { font-size: 2rem; }
+    .hero-buttons { 
+        display: flex; 
+        flex-direction: column; 
+        gap: 15px; 
+    }
     .btn-secondary { margin-left: 0; }
-    .section-title { font-size: 2rem; }
-    .contact-content { grid-template-columns: 1fr; }
-    .contact-form { padding: 20px; }
+    
+    .skills-grid, .projects-grid {
+        grid-template-columns: 1fr; /* Paksa satu kolom di HP kecil */
+    }
+
+    .about-text { padding: 20px; }
 }
 
-/* Dark Mode Card Overrides (Pastiin ini tetep ada) */
-body.dark-theme .skill-card, 
-body.dark-theme .project-card,
-body.dark-theme .about-text {
-    background: #1e293b;
-    border: 1px solid rgba(255,255,255,0.05);
+/* Matikan kursor custom di layar sentuh */
+@media (pointer: coarse) {
+    .cursor-dot, .cursor-outline { display: none; }
+    body { cursor: auto; }
 }
