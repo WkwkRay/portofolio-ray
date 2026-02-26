@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Mobile Menu Toggle
+    // 1. Mobile Menu Logic (Updated by Roy)
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
 
@@ -27,21 +27,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     progressBars.forEach(bar => observer.observe(bar));
 
-    // 3. Smooth Scroll
+    // 3. Smooth Scroll & Auto-Close Menu
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             const target = document.querySelector(targetId);
+            
             if (target) {
                 target.scrollIntoView({ behavior: 'smooth' });
                 
-                // Tutup menu mobile jika terbuka saat klik link
-                if (navLinks) navLinks.classList.remove('active');
-                const icon = hamburger ? hamburger.querySelector('i') : null;
-                if (icon) {
-                    icon.classList.add('fa-bars');
-                    icon.classList.remove('fa-times');
+                // Roy's fix: Tutup menu dan balikin ikon hamburger pas klik menu di HP
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    const icon = hamburger.querySelector('i');
+                    if (icon) {
+                        icon.classList.add('fa-bars');
+                        icon.classList.remove('fa-times');
+                    }
                 }
             }           
         });
@@ -65,8 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }, { duration: 500, fill: "forwards" });
         });
 
-        // Elemen yang bikin kursor membesar
-        const interactables = document.querySelectorAll("a, button, .skill-card, .project-card, .social-links a, .mode-toggle");
+        const interactables = document.querySelectorAll("a, button, .skill-card, .project-card, .social-links a, .mode-toggle, .hamburger");
         interactables.forEach(el => {
             el.addEventListener("mouseover", () => {
                 cursorOutline.classList.add("cursor-active");
@@ -79,13 +81,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 5. Dark Mode Logic (FITUR BARU)
+    // 5. Dark Mode Logic
     const darkModeToggle = document.querySelector('#dark-mode-toggle');
     if (darkModeToggle) {
         const body = document.body;
         const themeIcon = darkModeToggle.querySelector('i');
 
-        // Cek apakah user sebelumnya sudah set dark mode (Local Storage)
         const currentTheme = localStorage.getItem('theme');
         if (currentTheme === 'dark') {
             body.classList.add('dark-theme');
@@ -102,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 if (themeIcon) themeIcon.classList.replace('fa-sun', 'fa-moon');
             }
-            // Simpan pilihan user agar tidak reset saat refresh
             localStorage.setItem('theme', theme);
         });
     }
